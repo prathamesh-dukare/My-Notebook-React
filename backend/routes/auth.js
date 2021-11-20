@@ -13,7 +13,7 @@ router.post('/createuser', [
     body('name', "Name lenght Should be atLeast 2 ").isLength({ min: 2 }),
 ], async (req, res) => {
     try {
-        // Check foe errors and if exist return Bad Request 
+        // Check for errors and if exist return Bad Request 
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
