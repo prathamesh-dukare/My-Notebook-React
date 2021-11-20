@@ -18,26 +18,78 @@ router.post('/createuser', [
             return res.status(400).json({ errors: errors.array() });
         }
         // Check whether the user with this email exists already
-        const isEmailExist = await User.findOne({ email: req.body.email })
-        if (isEmailExist) {
+        let user = await User.findOne({ email: req.body.email })
+        if (user) {
             return res.status(400).json({ error: "The user with this email already exists" })
         } else {
             // hashing a password using bcrypt.js 
-            const salt = await bcrypt.genSalt(10)
-            const secPass = await bcrypt.hash(req.body.password,salt)
+            const salt = bcrypt.genSaltSync(10)
+            const secPass = bcrypt.hashSync(req.body.password, salt)
             // Creating a User 
-            const user = await User.create({
+            user = await User.create({
                 name: req.body.name,
                 email: req.body.email,
-                password:secPass
+                password: secPass
             })
-            const authToken = jwt.sign({user:user.id},"mySectretString")
-            res.json({authToken})
+            const authToken = jwt.sign({ user: user.id }, "mySectretString")
+            res.json({ authToken })
         }
     } catch (error) {
         console.error(error.Message)
         res.status(500).send("Some Internal Error Ocuured!")
     }
 })
+
+// Login a User Using: POST "/api/auth/login".
+router.post('/login', [
+    body('email', "Invalid Email Address").isEmail(),
+    body('password', "Password cannot be blank").exists()
+], async (req, res) => {
+    try {
+    const {email,password} = req.body
+    let user = await User.findOne({email:email})
+    if(!user){
+        return res.status(400).json({error : "Invalid Credentials(email)"})
+    }else{
+        // Validating Password 
+        const matchPassword = bcrypt.compareSync(password,user.password)
+        if(matchPassword){
+            const authToken = jwt.sign({ user: user.id }, "mySectretString")
+            res.json({ authToken })
+        }else{
+            return res.status(400).json({error : "Invalid Credentials(Password)"})
+        }
+    }
+    } catch (error) {
+        console.error(error.Message)
+        res.status(500).send("Some Internal Error Occured while Validating credentials!")
+    }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router
