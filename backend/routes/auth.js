@@ -4,8 +4,9 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
+const fetchUser = require('../middleware/fetchuser')
 
-// Create a User using: POST "/api/auth/createuser". Doesn't require Auth
+//Route1 : Create a User using: POST "/api/auth/createuser". Doesn't require Auth
 router.post('/createuser', [
     body('email', "Invalid Email Address").isEmail(),
     body('password', "Password Lenght Should be Greater than 5").isLength({ min: 5 }),
@@ -31,7 +32,7 @@ router.post('/createuser', [
                 email: req.body.email,
                 password: secPass
             })
-            const authToken = jwt.sign({ user: user.id }, "mySectretString")
+            const authToken = jwt.sign({ user: {id:user.id} }, "mySectretString")
             res.json({ authToken })
         }
     } catch (error) {
@@ -40,7 +41,7 @@ router.post('/createuser', [
     }
 })
 
-// Login a User Using: POST "/api/auth/login".
+//Route2 : Login a User Using: POST "/api/auth/login".
 router.post('/login', [
     body('email', "Invalid Email Address").isEmail(),
     body('password', "Password cannot be blank").exists()
@@ -54,7 +55,7 @@ router.post('/login', [
         // Validating Password 
         const matchPassword = bcrypt.compareSync(password,user.password)
         if(matchPassword){
-            const authToken = jwt.sign({ user: user.id }, "mySectretString")
+            const authToken = jwt.sign({ user: {id:user.id} }, "mySectretString")
             res.json({ authToken })
         }else{
             return res.status(400).json({error : "Invalid Credentials(Password)"})
@@ -67,16 +68,17 @@ router.post('/login', [
 
 })
 
-
-
-
-
-
-
-
-
-
-
+//Route3 : Get LoggedIn user data: POST "/api/auth/getuser".
+router.post('/getuser',fetchUser, async (req, res) => {
+    try {
+        const userID = req.user.id
+        const userData = await User.findById(userID).select("-password")
+        res.send(userData)
+    } catch (error) {
+        console.error(error.Message)
+        res.status(500).send("Some Internal Error Ocuured!!")
+    }
+})
 
 
 
