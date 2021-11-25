@@ -4,7 +4,7 @@ import {Link,useLocation} from "react-router-dom";
 export default function NavBar() {
    let location = useLocation()
    return (
-      <nav className="navbar navbar-light navbar-expand-lg" style={{backgroundColor:"rgb(175 239 217)",height:'3.2em',color:"white"}}>
+      <nav className="navbar navbar-light navbar-expand-lg fixed-top" style={{backgroundColor:"rgb(175 239 217)",height:'3.2em',color:"white"}}>
          <div className="container-fluid">
             <Link className="navbar-brand" to="/">
                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">

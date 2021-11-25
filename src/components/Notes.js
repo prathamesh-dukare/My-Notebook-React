@@ -6,11 +6,11 @@ export default function Notes() {
     const context = useContext(NotesContext)
     const { notes, setNotes } = context;
     return (
-        <div>
+        <div className="row mx-5 my-3">
             <h2>Your Notes</h2>
             {
             notes.map((note) => {
-                return <NoteItem/>
+                return <NoteItem note={note}/>
             })
             }
         </div>

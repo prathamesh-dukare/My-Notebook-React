@@ -3,8 +3,9 @@ import { useState } from "react";
 
 const NotesState = (props)=>{
     const initialNotes = [
+        
         {
-          "_id": "619c8990dd67692f4ef04bc8",
+          "_id": "619c89a1dd67692f4ef04bcb",
           "user": "619c778db074af59a1b01177",
           "title": "Test Noteq",
           "description": "a",
@@ -15,7 +16,47 @@ const NotesState = (props)=>{
           "_id": "619c89a1dd67692f4ef04bcb",
           "user": "619c778db074af59a1b01177",
           "title": "Test Noteq",
-          "description": "a",
+          "description": "a cross-platform PowerShel",
+          "tags": "a",
+          "__v": 0
+        },
+        {
+          "_id": "619c89a1dd67692f4ef04bcb",
+          "user": "619c778db074af59a1b01177",
+          "title": "Test Noteq",
+          "description": "a cross-platform PowerShel",
+          "tags": "a",
+          "__v": 0
+        },
+        {
+          "_id": "619c89a1dd67692f4ef04bcb",
+          "user": "619c778db074af59a1b01177",
+          "title": "Test Noteq",
+          "description": "a cross-platform PowerShel",
+          "tags": "a",
+          "__v": 0
+        },
+        {
+          "_id": "619c89a1dd67692f4ef04bcb",
+          "user": "619c778db074af59a1b01177",
+          "title": "Test Noteq",
+          "description": "a cross-platform PowerShel",
+          "tags": "a",
+          "__v": 0
+        },
+        {
+          "_id": "619c89a1dd67692f4ef04bcb",
+          "user": "619c778db074af59a1b01177",
+          "title": "Test Noteq",
+          "description": "a cross-platform PowerShel",
+          "tags": "a",
+          "__v": 0
+        },
+        {
+          "_id": "619c89a1dd67692f4ef04bcb",
+          "user": "619c778db074af59a1b01177",
+          "title": "Test Noteq",
+          "description": "a cross-platform PowerShel",
           "tags": "a",
           "__v": 0
         }
