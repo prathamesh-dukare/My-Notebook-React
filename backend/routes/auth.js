@@ -50,20 +50,20 @@ router.post('/login', [
         const { email, password } = req.body
         let user = await User.findOne({ email: email })
         if (!user) {
-            return res.status(400).json({ error: "Invalid Credentials(email)" })
+            return res.status(400).json({status:"error", errorMessage: "Invalid Credentials(email)" })
         } else {
             // Validating Password 
             const matchPassword = bcrypt.compareSync(password, user.password)
             if (matchPassword) {
                 const authToken = jwt.sign({ user: { id: user.id } }, "mySectretString")
-                res.json({ authToken })
+                res.json({status:"success", authToken })
             } else if (!matchPassword) {
-                return res.status(400).json({ error: "Invalid Credentials(Password)" })
+                return res.status(400).json({status:"error", errorMessage: "Invalid Credentials(Password)" })
             }
         }
     } catch (error) {
         console.error(error.Message)
-        res.status(500).send("Some Internal Error Occured while Validating credentials!")
+        res.status(500).jason({status:"error",errorMessage:"Some Internal Error Occured while Validating credentials!"})
     }
 })
 

@@ -27,6 +27,8 @@ export default function NavBar() {
                   </li>
                   
                </ul>
+               <Link className="btn btn-sm mx-1 btn-success" to="/login" role="button">Login</Link>
+               <Link className="btn btn-sm mx-1 btn-warning" to="/signup" role="button">SignUp</Link>
                {/* <button className="btn btn-outline btn-success" type="submit">Login</button>
                <button className="btn btn-outline btn-warning" type="submit">SignUp</button> */}
             </div>
