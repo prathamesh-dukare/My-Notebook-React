@@ -25,9 +25,8 @@ router.get('/getallnotes', fetchUser, async (req, res) => {
 //Route2 : Create Notes: POST "/api/notes/createnote": Login Required!
 router.post('/createnote', fetchUser, [
     body('title', "Title cannot be blank").isLength({ min: 1 }),
-    body('description', "Description cannot be blank").isLength({ min: 1 }),
-    body('tags', "Tags cannot be blank").isLength({ min: 1 })
-], async (req, res) => {
+    body('description', "Description cannot be blank").isLength({ min: 1 })
+    ], async (req, res) => {
     try {
         // Check for errors and if exist return Bad Request 
         const errors = validationResult(req);
@@ -60,7 +59,7 @@ router.put('/updatenote/:id', fetchUser, [
     body('title', "Title cannot be blank").isLength({ min: 1 }),
     body('description', "Description cannot be blank").isLength({ min: 1 }),
     body('tags', "Tags cannot be blank").isLength({ min: 1 })
-], async (req, res) => {
+    ], async (req, res) => {
     try {
         const { title, description, tags } = req.body;
         // Check for errors and if exist return Bad Request 
@@ -69,7 +68,7 @@ router.put('/updatenote/:id', fetchUser, [
             return res.status(400).json({ errors: errors.array() })
         }
         //Finding a note & using provided note ID
-        if(req.params.id.length !==24){
+        if (req.params.id.length !== 24) {
             return res.status(400).send("Not Found!")
         }
         const currentNote = await Notes.findById(req.params.id)
@@ -96,13 +95,13 @@ router.put('/updatenote/:id', fetchUser, [
 //Route4 : Delete Notes: DELETE "/api/notes/deletenote": Login Required! 
 router.delete('/deletenote/:id', fetchUser, async (req, res) => {
     try {
-         // Check for errors and if exist return Bad Request 
-         const errors = validationResult(req);
-         if (!errors.isEmpty()) {
-             return res.status(400).json({ errors: errors.array() })
-         }
-         //Finding a note & using provided note ID
-        if(req.params.id.length !==24){
+        // Check for errors and if exist return Bad Request 
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() })
+        }
+        //Finding a note & using provided note ID
+        if (req.params.id.length !== 24) {
             return res.status(400).send("Not Found!")
         }
         const currentNote = await Notes.findById(req.params.id)
@@ -113,12 +112,13 @@ router.delete('/deletenote/:id', fetchUser, async (req, res) => {
                 return res.status(401).send("Not alllowed!")
             } else {
                 await Notes.findByIdAndDelete(req.params.id)
-                res.send({"Success":"Deleted Note Succesfully","id":`${req.params.id}`})
-            }          
+                res.send({ "Success": "Deleted Note Succesfully", "id": `${req.params.id}` })
+            }
         }
     } catch (error) {
         console.error(error)
         res.status(500).send("Some Internal Error Ocuured!")
     }
 })
+
 module.exports = router

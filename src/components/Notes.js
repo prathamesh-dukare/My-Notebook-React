@@ -1,25 +1,23 @@
-import React, { useContext, useEffect, useRef,useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import NotesContext from '../context/notes/NotesContext'
 import NoteItem from './NoteItem';
 
 export default function Notes() {
     const context = useContext(NotesContext)
-    const { notes, fetchAllNotes,editNote } = context;
+    const { notes, fetchAllNotes, editNote } = context;
     useEffect(() => {
         fetchAllNotes()
         // eslint-disable-next-line
     }, [])
     const ref = useRef(null)
     const refClose = useRef(null)
-    const [currentENote, setCurrentENote] = useState({id:"",etitle: "", edescription: "", etags: "" })
+    const [currentENote, setCurrentENote] = useState({ id: "", etitle: "", edescription: "", etags: "" })
     const updateNote = (note) => {
         ref.current.click()
-        console.log(note);
-        setCurrentENote({id:note._id ,etitle: note.title, edescription: note.description, etags:note.tags})
+        setCurrentENote({ id: note._id, etitle: note.title, edescription: note.description, etags: note.tags })
     }
     const editNoteHandler = (e) => {
-        console.log("updating a note",currentENote)
-        editNote(currentENote.id , currentENote.etitle, currentENote.edescription, currentENote.etags)
+        editNote(currentENote.id, currentENote.etitle, currentENote.edescription, currentENote.etags)
         refClose.current.click()
     }
     const onChange = (e) => {
@@ -27,11 +25,11 @@ export default function Notes() {
     }
     return (
         <>
-            {/* <!-- Button trigger modal --> */}
-            <button type="button" style={{display:"none"}} ref={ref} className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            {/* Modal Button */}
+            <button type="button" style={{ display: "none" }} ref={ref} className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
-            {/* <!-- Modal --> */}
+            {/* Modal  */}
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -44,10 +42,10 @@ export default function Notes() {
                                 <input type="text" className="form-control" onChange={onChange} id="etitle" name="etitle" value={currentENote.etitle} placeholder="Note Title" />
                             </div>
                             <div className="form-group my-2">
-                                <textarea className="form-control" onChange={onChange} id="edescription" name="edescription" value={currentENote.edescription}  placeholder="Enter new Details here....." rows="2"></textarea>
+                                <textarea className="form-control" onChange={onChange} id="edescription" name="edescription" value={currentENote.edescription} placeholder="Enter new Details here....." rows="2"></textarea>
                             </div>
                             <div className="form-group my-2">
-                                <input type="text" className="form-control" onChange={onChange} id="etags" name="etags" value={currentENote.etags}  placeholder="Tags Goes here" />
+                                <input type="text" className="form-control" onChange={onChange} id="etags" name="etags" value={currentENote.etags} placeholder="Tags Goes here" />
                             </div>
                         </div>
                         <div className="modal-footer">
@@ -57,11 +55,11 @@ export default function Notes() {
                     </div>
                 </div>
             </div>
-            {/* <!-- Modal --> */}
+            {/* Modal  */}
             <div className="row mx-5 my-3">
                 <h2>Your Notes</h2>
                 <div className="container text-center">
-                    {notes.length===0 && 'Notes Are Empty'}
+                    {notes.length === 0 && 'Notes Are Empty'}
                 </div>
                 {
                     notes.map((note) => {
