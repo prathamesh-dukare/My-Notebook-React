@@ -19,7 +19,7 @@ export default function SignUp(props) {
         console.log(jason);
         //Redirect to Home
         if (jason.status === "success") {
-            localStorage.setItem("token", jason.authToken)
+            localStorage.setItem("auth-token", jason.authToken)
             history.push("/")
             props.setAlertType("success")
             props.setAlertMessage(`Welcome ${creds.name} `)

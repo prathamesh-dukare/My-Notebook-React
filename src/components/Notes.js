@@ -1,13 +1,19 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import NotesContext from '../context/notes/NotesContext'
 import NoteItem from './NoteItem';
+import { useHistory } from 'react-router-dom'
 
 export default function Notes(props) {
+    let history = useHistory()
     const context = useContext(NotesContext)
     const { notes, fetchAllNotes, editNote } = context;
     const  {alertRef ,setAlertMessage ,setAlertType} = props;
     useEffect(() => {
-        fetchAllNotes()
+        if(localStorage.getItem("auth-token")){
+            fetchAllNotes()
+        }else{
+            history.push('/login')
+        }
         // eslint-disable-next-line
     }, [])
     const ref = useRef(null)

@@ -20,6 +20,8 @@ function App() {
   const notify = () => toast(alertMessage,{position: toast.POSITION.TOP_CENTER,type:alertType, autoClose: 3000});
   const alertRef= useRef(null);
   //TODO:Dark Mode+ Dark Alerts
+  //TODO:User Profile
+  //TODO:About Page
   return (
     <div className="App">
       <NoteState>

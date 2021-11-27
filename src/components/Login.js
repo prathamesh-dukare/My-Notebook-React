@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import {Link, useHistory } from 'react-router-dom'
 
 export default function Login(props) {
     let history = useHistory()
@@ -13,12 +13,12 @@ export default function Login(props) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            }, body: JSON.stringify({ name: creds.name, email: creds.email, password: creds.password })
+            }, body: JSON.stringify({ email: creds.email, password: creds.password })
         });
         let jason = await response.json()
         //Redirect to Home
         if (jason.status === "success") {
-            localStorage.setItem("token", jason.authToken)
+            localStorage.setItem("auth-token", jason.authToken)
             history.push("/")
             props.setAlertType("success")
             props.setAlertMessage("Login Successful")
@@ -38,9 +38,14 @@ export default function Login(props) {
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" name="password" value={creds.password} onChange={onChange} id="exampleInputPassword1" autoComplete="on" minLength={5} />
+                <input type="password" className="form-control" name="password" value={creds.password} minLength={5} onChange={onChange} id="exampleInputPassword1" required autoComplete="on"  />
             </div>
-            <button type="submit" className="btn btn-success">Login</button>
+            <div className="d-flex" style={{alignItems: "baseline"}}>
+            <button type="submit" className="btn btn-success mx-2">Login</button>
+            <div className="mb-3">
+                New User? <Link to="/signup">Register</Link>
+            </div>
+            </div>
         </form>
     )
 }

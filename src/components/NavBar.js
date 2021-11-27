@@ -3,6 +3,10 @@ import {Link,useLocation} from "react-router-dom";
 
 export default function NavBar() {
    let location = useLocation()
+   const logoutHandler = ()=>{
+         localStorage.removeItem('auth-token')
+         window.location.reload()
+   }
    return (
       <nav className="navbar navbar-light navbar-expand-lg fixed-top" style={{backgroundColor:"rgb(175 239 217)",height:'3.2em',color:"white"}}>
          <div className="container-fluid">
@@ -27,10 +31,12 @@ export default function NavBar() {
                   </li>
                   
                </ul>
+               { !localStorage.getItem("auth-token")? <>
                <Link className="btn btn-sm mx-1 btn-success" to="/login" role="button">Login</Link>
                <Link className="btn btn-sm mx-1 btn-warning" to="/signup" role="button">SignUp</Link>
-               {/* <button className="btn btn-outline btn-success" type="submit">Login</button>
-               <button className="btn btn-outline btn-warning" type="submit">SignUp</button> */}
+               </>:<><Link className="btn btn-sm mx-1 btn-warning" onClick={logoutHandler}  role="button">LogOut</Link></>
+               
+               }
             </div>
          </div>
       </nav>
