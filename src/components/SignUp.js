@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-export default function SignUp() {
+export default function SignUp(props) {
     let history = useHistory()
-    const [creds, setCreds] = useState({name: "", email: "", password: "",cpassword: "" })
+    const [creds, setCreds] = useState({ name: "", email: "", password: "" })
     const onChange = (e) => {
         setCreds({ ...creds, [e.target.name]: e.target.value })
     }
@@ -21,18 +21,24 @@ export default function SignUp() {
         if (jason.status === "success") {
             localStorage.setItem("token", jason.authToken)
             history.push("/")
-        } else if(jason.status === "already-exist") {
-            alert("The user with this email already exists")
-        }else{
-            alert(jason.errorMessage)
+            props.setAlertType("success")
+            props.setAlertMessage(`Welcome ${creds.name} `)
+            props.alertRef.current.click()
+        } else if (jason.status === "already-exist") {
+            props.setAlertType("error")
+            props.setAlertMessage("User email already exists")
+            props.alertRef.current.click()
+        } else {
+            props.setAlertType("error")
+            props.setAlertMessage("Intenal Server Error!")
+            props.alertRef.current.click()
         }
     }
-
     return (
         <form className="container" onSubmit={onSubmit} style={{ marginTop: "5rem", width: "50%" }}>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Name</label>
-                <input type="text" className="form-control" name="name" value={creds.name} onChange={onChange} id="exampleInputName1" minLength={1} autoComplete="on" required/>
+                <input type="text" className="form-control" name="name" value={creds.name} onChange={onChange} id="exampleInputName1" minLength={2} autoComplete="on" required />
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
@@ -41,13 +47,9 @@ export default function SignUp() {
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" name="password" value={creds.password} onChange={onChange} id="exampleInputPassword1" minLength={5}  autoComplete="on" required/>
+                <input type="password" className="form-control" name="password" value={creds.password} onChange={onChange} id="exampleInputPassword1" minLength={5} autoComplete="on" required />
             </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword2" className="form-label">Confirm Password</label>
-                <input type="password" className="form-control" name="cpassword" value={creds.cpassword} onChange={onChange} id="exampleInputPassword1" minLength={5}  autoComplete="on" required />
-            </div>
-            <button type="submit" className="btn btn-primary">Create Account</button>
+            <button type="submit" className="btn btn-success">Create Account</button>
         </form>
     )
 }

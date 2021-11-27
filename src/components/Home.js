@@ -1,8 +1,9 @@
 import React from 'react'
 import HomeNotes from './HomeNotes'
 
-export default function Home() {
+export default function Home(props) {
+    const  {alertRef ,setAlertMessage ,setAlertType} = props;
     return (
-       <HomeNotes/> 
+       <HomeNotes alertRef={alertRef} setAlertMessage={setAlertMessage} setAlertType={setAlertType}/> 
     )
 }

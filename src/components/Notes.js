@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import NotesContext from '../context/notes/NotesContext'
 import NoteItem from './NoteItem';
 
-export default function Notes() {
+export default function Notes(props) {
     const context = useContext(NotesContext)
     const { notes, fetchAllNotes, editNote } = context;
+    const  {alertRef ,setAlertMessage ,setAlertType} = props;
     useEffect(() => {
         fetchAllNotes()
         // eslint-disable-next-line
@@ -18,7 +19,12 @@ export default function Notes() {
     }
     const editNoteHandler = (e) => {
         editNote(currentENote.id, currentENote.etitle, currentENote.edescription, currentENote.etags)
+        setAlertType('success')
+        setAlertMessage('Note Updated')
         refClose.current.click()
+        setTimeout(() => {
+            alertRef.current.click()
+        }, 280);
     }
     const onChange = (e) => {
         setCurrentENote({ ...currentENote, [e.target.name]: e.target.value })
@@ -63,7 +69,7 @@ export default function Notes() {
                 </div>
                 {
                     notes.map((note) => {
-                        return <NoteItem key={note._id} updateNote={updateNote} note={note} />
+                        return <NoteItem key={note._id} updateNote={updateNote} note={note} alertRef={alertRef} setAlertMessage={setAlertMessage} setAlertType={setAlertType} />
                     })
                 }
             </div>

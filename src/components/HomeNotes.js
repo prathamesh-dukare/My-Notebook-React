@@ -2,7 +2,8 @@ import React, { useContext, useState,useRef } from 'react'
 import Notes from './Notes'
 import NotesContext from '../context/notes/NotesContext'
 
-export default function HomeNotes() {
+export default function HomeNotes(props) {
+    const  {alertRef ,setAlertMessage ,setAlertType} = props;
     const { addNote } = useContext(NotesContext)
     const [currentNote, setCurrentNote] = useState({ title: "", description: "", tags: "Default" })
     const addNoteHandler = (e) => {
@@ -34,8 +35,7 @@ export default function HomeNotes() {
                         <button className="btn btn-outline btn-danger mx-2 my-1" disabled={currentNote.title.length===0 && currentNote.description.length===0 && currentNote.tags.length===0 } onClick={()=>{setCurrentNote({ title: "", description: "", tags: "Default" })}} ref={refReset} type="reset">Reset Details</button>
                     </div>
                 </form>
-                <Notes />
-
+                <Notes alertRef={alertRef} setAlertMessage={setAlertMessage} setAlertType={setAlertType} />
             </div>
         </div>
     )
