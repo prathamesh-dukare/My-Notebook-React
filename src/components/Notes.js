@@ -24,7 +24,7 @@ export default function Notes(props) {
         refClose.current.click()
         setTimeout(() => {
             alertRef.current.click()
-        }, 280);
+        }, 160);
     }
     const onChange = (e) => {
         setCurrentENote({ ...currentENote, [e.target.name]: e.target.value })

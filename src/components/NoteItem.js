@@ -13,7 +13,7 @@ export default function NoteItem(props) {
         deleteNote(note._id)
         setTimeout(() => {
             alertRef.current.click()
-        }, 280);
+        }, 160);
     }
     return (
         <div className="card border-info mb-2 col-md-4 row mx-3" style={{ maxWidth: "18rem" }}>
