@@ -31,7 +31,7 @@ export default function HomeNotes() {
                     </div>
                     <div className="container my-2 flex-container text-center">
                         <button className="btn btn-outline btn-success mx-2 my-1" disabled={currentNote.title.length===0 || currentNote.description.length===0 } onClick={addNoteHandler} type="submit">Add a Note</button>
-                        <button className="btn btn-outline btn-danger mx-2 my-1" disabled={currentNote.title.length===0 && currentNote.description.length===0 && currentNote.tags.length===0 } ref={refReset} type="reset">Reset Details</button>
+                        <button className="btn btn-outline btn-danger mx-2 my-1" disabled={currentNote.title.length===0 && currentNote.description.length===0 && currentNote.tags.length===0 } onClick={()=>{setCurrentNote({ title: "", description: "", tags: "Default" })}} ref={refReset} type="reset">Reset Details</button>
                     </div>
                 </form>
                 <Notes />

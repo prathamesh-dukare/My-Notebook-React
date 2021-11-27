@@ -57,8 +57,7 @@ router.post('/createnote', fetchUser, [
 //Route3 : Update Notes: PUT "/api/notes/updatenote": Login Required!
 router.put('/updatenote/:id', fetchUser, [
     body('title', "Title cannot be blank").isLength({ min: 1 }),
-    body('description', "Description cannot be blank").isLength({ min: 1 }),
-    body('tags', "Tags cannot be blank").isLength({ min: 1 })
+    body('description', "Description cannot be blank").isLength({ min: 1 })
     ], async (req, res) => {
     try {
         const { title, description, tags } = req.body;
@@ -81,7 +80,7 @@ router.put('/updatenote/:id', fetchUser, [
                 const newNote = {}
                 if (title) { newNote.title = title }
                 if (description) { newNote.description = description }
-                if (tags) { newNote.tags = tags }
+                if (tags) { newNote.tags = tags }else{newNote.tags = "Default"}
                 const updatedNote = await Notes.findByIdAndUpdate(req.params.id, { $set: newNote }, { new: true })
                 res.send(updatedNote)
             }

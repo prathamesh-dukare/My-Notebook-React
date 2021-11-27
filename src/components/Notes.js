@@ -50,7 +50,7 @@ export default function Notes() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" onClick={editNoteHandler} className="btn btn-primary">Save changes</button>
+                            <button type="button" onClick={editNoteHandler} disabled={currentENote.etitle.length===0 || currentENote.edescription.length===0 } className="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>

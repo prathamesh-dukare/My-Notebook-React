@@ -21,7 +21,7 @@ router.post('/createuser', [
         // Check whether the user with this email exists already
         let user = await User.findOne({ email: req.body.email })
         if (user) {
-            return res.status(400).json({ error: "The user with this email already exists" })
+            return res.status(400).json({status:"already-exist", error: "The user with this email already exists" })
         } else {
             // hashing a password using bcrypt.js 
             const salt = bcrypt.genSaltSync(10)
@@ -33,11 +33,11 @@ router.post('/createuser', [
                 password: secPass
             })
             const authToken = jwt.sign({ user: { id: user.id } }, "mySectretString")
-            res.json({ authToken })
+            res.json({status:"success", authToken })
         }
     } catch (error) {
         console.error(error.Message)
-        res.status(500).send("Some Internal Error Occured!")
+        res.status(500).jason({ error:"internal-error", errorMessage:"Some Internal Error Occured!"})
     }
 })
 
