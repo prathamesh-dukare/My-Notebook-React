@@ -37,7 +37,7 @@ router.post('/createuser', [
         }
     } catch (error) {
         console.error(error.Message)
-        res.status(500).jason({ error:"internal-error", errorMessage:"Some Internal Error Occured!"})
+        res.status(500).send({ error:"internal-error", errorMessage:"Some Internal Error Occured!"})
     }
 })
 
@@ -58,12 +58,12 @@ router.post('/login', [
                 const authToken = jwt.sign({ user: { id: user.id } }, "mySectretString")
                 res.json({status:"success", authToken })
             } else if (!matchPassword) {
-                return res.status(400).json({status:"error", errorMessage: "Invalid Credentials(Password)" })
+                return res.status(400).send({status:"error", errorMessage: "Invalid Credentials(Password)" })
             }
         }
     } catch (error) {
         console.error(error.Message)
-        res.status(500).jason({status:"error",errorMessage:"Some Internal Error Occured while Validating credentials!"})
+        res.status(500).send({status:"error",errorMessage:"Some Internal Error Occured while Validating credentials!"})
     }
 })
 

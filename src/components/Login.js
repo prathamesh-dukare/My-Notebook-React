@@ -31,6 +31,7 @@ export default function Login(props) {
     }
     return (
         <form className="container" onSubmit={onSubmit} style={{ marginTop: "5rem", width: "50%" }}>
+        <h2>Login to continue</h2>
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input type="email" className="form-control" name="email" value={creds.email} onChange={onChange} id="exampleInputEmail1" aria-describedby="emailHelp" required />

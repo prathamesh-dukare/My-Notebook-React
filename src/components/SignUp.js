@@ -16,7 +16,7 @@ export default function SignUp(props) {
             }, body: JSON.stringify({ name: creds.name, email: creds.email, password: creds.password })
         });
         let jason = await response.json()
-        console.log(jason);
+        // console.log(jason);
         //Redirect to Home
         if (jason.status === "success") {
             localStorage.setItem("auth-token", jason.authToken)
@@ -36,6 +36,7 @@ export default function SignUp(props) {
     }
     return (
         <form className="container" onSubmit={onSubmit} style={{ marginTop: "5rem", width: "50%" }}>
+              <h2>SignUp to My Notebook</h2>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Name</label>
                 <input type="text" className="form-control" name="name" value={creds.name} onChange={onChange} id="exampleInputName1" minLength={2} autoComplete="on" required />
