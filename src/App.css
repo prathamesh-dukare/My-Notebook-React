@@ -26,7 +26,12 @@ h2{
 .btn-addnote{
   background-color: #0aa640;
 }
-
+.collapse {
+  background-color: rgb(137, 230, 169);
+  padding: 0.2em 1rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 /* About  */
 img{
   width:55vw;
