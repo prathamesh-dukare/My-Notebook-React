@@ -1,3 +1,6 @@
+body{
+  font-family: 'Bitter', serif;
+}
 i{
   padding: 3px;
   cursor: pointer;
@@ -18,4 +21,25 @@ h2{
 }
 .my-5{
   margin-bottom: 2rem!important;
+}
+
+.btn-addnote{
+  background-color: #0aa640;
+}
+
+/* About  */
+img{
+  width:55vw;
+}
+@media screen and (max-width: 800px) {
+  .d-flex{
+    flex-direction: column;
+    text-align: center;
+  }
+  li{
+    list-style: none;
+  }
+  .header img{
+    width: 80vw;
+  }
 }

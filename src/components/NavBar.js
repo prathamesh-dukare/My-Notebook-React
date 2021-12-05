@@ -8,7 +8,7 @@ export default function NavBar() {
          window.location.reload()
    }
    return (
-      <nav className="navbar navbar-light navbar-expand-lg fixed-top" style={{backgroundColor:"rgb(175 239 217)",height:'3.2em',color:"white"}}>
+      <nav className="navbar navbar-light navbar-expand-lg fixed-top" style={{backgroundColor:"rgb(106 222 146)",height:'3.2em',color:"white"}}>
          <div className="container-fluid">
             <Link className="navbar-brand" to="/">
                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
@@ -34,7 +34,7 @@ export default function NavBar() {
                { !localStorage.getItem("auth-token")? <>
                <Link className="btn btn-sm mx-1 btn-success" to="/login" role="button">Login</Link>
                <Link className="btn btn-sm mx-1 btn-warning" to="/signup" role="button">SignUp</Link>
-               </>:<><Link className="btn btn-sm mx-1 btn-warning" onClick={logoutHandler}  role="button">LogOut</Link></>
+               </>:<><Link className="btn btn-sm mx-1 btn-warning" to="" onClick={logoutHandler}  role="button">LogOut</Link></>
                
                }
             </div>

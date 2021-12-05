@@ -12,7 +12,7 @@ import About from "./components/About";
 import NoteState from "./context/notes/NoteState";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 
 function App() {
   const [alertMessage, setAlertMessage] = useState("");
@@ -21,12 +21,14 @@ function App() {
   const alertRef= useRef(null);
   //TODO:Dark Mode+ Dark Alerts
   //TODO:User Profile
-  //TODO:About Page
+  //TODO:Globle state for Dark mode & loggedIn Status
+  //TODO:Login Page rediret to Home if(loggedIn)
   return (
     <div className="App">
       <NoteState>
         <Router>
           <NavBar />
+          
           <div>
                 <button ref={alertRef} onClick={notify}  style={{display:"none"}}></button>
                 <ToastContainer />
@@ -47,7 +49,7 @@ function App() {
           </Switch>
         </Router>
       </NoteState>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

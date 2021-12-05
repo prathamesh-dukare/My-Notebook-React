@@ -4,16 +4,12 @@
 ## The Note taking app with note editing & Custumization Features.
 
 
-# Tech Stack
-- ### **Front-End** : React.js
-- ### **Back-End** : Node.js
-- ### **Web Framework** : Express.js
-- ### **Database** : MongoDB
-- ### **Styling** : Bootstrap
-
-## Additional NPM Libraries : 
-- ### react-router-dom: 5.3.0
-- ### react-toastify: 8.1.0
+# Additional NPM Libraries : 
+- ### react-toastify : 8.1.0
+- ### bcryptjs : 2.4.3
+- ### cors : 2.8.5
+- ### express-validator : 6.13.0
+- ### jsonwebtoken : 8.5.1
 
 
 ***Glad to see you here! Show some love by Connecting on socials***
