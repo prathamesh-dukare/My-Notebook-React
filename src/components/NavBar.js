@@ -1,14 +1,18 @@
-// import React,{useEffect, useState} from 'react'
-import {Link,useLocation} from "react-router-dom";
+import React, { useRef } from 'react'
+import { Link, useLocation } from "react-router-dom";
 
 export default function NavBar() {
    let location = useLocation()
-   const logoutHandler = ()=>{
-         localStorage.removeItem('auth-token')
-         window.location.reload()
+   const logoutHandler = () => {
+      localStorage.removeItem('auth-token')
+      window.location.reload()
+   }
+   const Navref = useRef(null)
+   const closeToggle = () => {
+      Navref.current.click()
    }
    return (
-      <nav className="navbar navbar-light navbar-expand-lg fixed-top" style={{backgroundColor:"rgb(106 222 146)",height:'3.2em',color:"white"}}>
+      <nav className="navbar navbar-light navbar-expand-lg fixed-top" style={{ backgroundColor: "rgb(106 222 146)", height: '3.2em', color: "white" }}>
          <div className="container-fluid">
             <Link className="navbar-brand" to="/">
                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
@@ -18,24 +22,26 @@ export default function NavBar() {
                </svg>
                myNoteBook
             </Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" ref={Navref} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                     <Link className={`nav-link ${location.pathname==="/"?"active":""}`} aria-current="page" to="/">Home</Link>
+                     <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} onClick={closeToggle} aria-current="page" to="/">Home</Link>
                   </li>
                   <li className="nav-item">
-                     <Link className={`nav-link ${location.pathname==="/about"?"active":""}`} aria-current="page" to="/about">About</Link>
+                     <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} onClick={closeToggle} aria-current="page" to="/about">About</Link>
                   </li>
-                  
+
                </ul>
-               { !localStorage.getItem("auth-token")? <>
-               <Link className="btn btn-sm mx-1 btn-success" to="/login" role="button">Login</Link>
-               <Link className="btn btn-sm mx-1 btn-warning" to="/signup" role="button">SignUp</Link>
-               </>:<><Link className="btn btn-sm mx-1 btn-warning" to="" onClick={logoutHandler}  role="button">LogOut</Link></>
-               
+               {!localStorage.getItem("auth-token") ? <>
+                  <ul className="login-signup" style={{margin:0}}>
+                  <Link className="btn btn-sm mx-1 btn-success" to="/login" onClick={closeToggle} role="button">Login</Link>
+                  <Link className="btn btn-sm mx-1 btn-warning" to="/signup" onClick={closeToggle} role="button">SignUp</Link>
+                  </ul>
+               </> : <><Link className="btn btn-sm mx-1 btn-warning logout-btn" to="" onClick={logoutHandler} role="button">LogOut</Link></>
+
                }
             </div>
          </div>

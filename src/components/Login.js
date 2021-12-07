@@ -31,8 +31,8 @@ export default function Login(props) {
         }
     }
     return (
-        <form className="container" onSubmit={onSubmit} style={{ marginTop: "5rem", width: "50%" }}>
-        <h2>Login to continue</h2>
+        <form className="container signup-form" onSubmit={onSubmit} style={{ marginTop: "5rem", width: "50%" }}>
+        <h2 style={{marginBottom: "2.25rem"}}>Login to continue</h2>
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input type="email" className="form-control" name="email" value={creds.email} onChange={onChange} id="exampleInputEmail1" aria-describedby="emailHelp" required />
@@ -42,7 +42,7 @@ export default function Login(props) {
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input type="password" className="form-control" name="password" value={creds.password} minLength={5} onChange={onChange} id="exampleInputPassword1" required autoComplete="on"  />
             </div>
-            <div className="d-flex" style={{alignItems: "baseline"}}>
+            <div className="d-flex" style={{alignItems: "baseline",flexDirection:"row"}}>
             <button type="submit" className="btn btn-success mx-2">Login</button>
             <div className="mb-3">
                 New User? <Link to="/signup">Register</Link>

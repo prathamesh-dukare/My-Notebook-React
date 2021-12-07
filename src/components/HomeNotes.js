@@ -19,8 +19,8 @@ export default function HomeNotes(props) {
     return (
         <div>
             <div className="container my-3">
-                <form className="container my-5" style={{ width: "55vw" }}>
-                    <h2 style={{ marginTop: "2em" }}>Create a New Note</h2>
+                <form className="container my-5 notes-form">
+                    <h2 style={{ marginTop: "3em" }}>Create a New Note</h2>
                     <div className="form-group my-2">
                         <input type="text" className="form-control" onChange={onChange} id="title" name="title" placeholder="Note Title" />
                     </div>

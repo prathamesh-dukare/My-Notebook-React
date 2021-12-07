@@ -7,7 +7,7 @@ export default function About() {
             <div className="header">
                 <img src={logo} alt="Header" />
             </div>
-            <div className="header-info" style={{fontSize:"18px",marginTop:"1rem"}}>
+            <div className="header-info" style={{fontSize:"18px",marginTop:"1rem",padding:"0 2em"}}>
                 <h1>My Notebook</h1>
                 <p>
                     This is a simple note taking app which allows you to create, edit and delete notes.
@@ -20,7 +20,6 @@ export default function About() {
                     <li>Search by Tags</li>
                 </ul>
                 <div className="d-flex" style={{ flexDirection: "column" }}>
-                    <span>© Copyright All Rights Reserved 2021</span>
                     <span>Made with 💖 &amp; React by <a href="https://linktr.ee/prathameshdukare" rel="noreferrer" target="_blank">Prathamesh</a></span>
                 </div>
             </div>

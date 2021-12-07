@@ -22,7 +22,7 @@
 <b>Database</b>: mongoDB
 <br>
 
-<b>Deployment</b>: Vercel
+<b>Deployment</b>: Netlify
 
 ***Glad to see you here! Show some love by Connecting on socials***
 

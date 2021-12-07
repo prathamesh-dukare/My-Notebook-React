@@ -36,7 +36,7 @@ export default function SignUp(props) {
         }
     }
     return (
-        <form className="container" onSubmit={onSubmit} style={{ marginTop: "5rem", width: "50%" }}>
+        <form className="container signup-form" onSubmit={onSubmit} style={{ marginTop: "5rem", width: "50%" }}>
               <h2>SignUp to My Notebook</h2>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Name</label>

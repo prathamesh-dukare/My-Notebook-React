@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import NotesContext from '../context/notes/NotesContext'
 import NoteItem from './NoteItem';
+import Spinner from "./Spinner";
 import { useHistory } from 'react-router-dom'
 
 export default function Notes(props) {
     let history = useHistory()
     const context = useContext(NotesContext)
-    const { notes, fetchAllNotes, editNote } = context;
+    const { notes,loadingStatus, fetchAllNotes, editNote } = context;
     const  {alertRef ,setAlertMessage ,setAlertType} = props;
     useEffect(() => {
         if(localStorage.getItem("auth-token")){
@@ -70,8 +71,9 @@ export default function Notes(props) {
             {/* Modal  */}
             <div className="row mx-5 my-3">
                 <h2>Your Notes</h2>
-                <div className="container text-center">
-                    {notes.length === 0 && 'Notes Are Empty'}
+                <div className="container text-center my-3">
+                    {loadingStatus && <Spinner />}
+                    {(notes.length === 0 && !loadingStatus) && 'Notes Are Empty'}
                 </div>
                 {
                     notes.map((note) => {
