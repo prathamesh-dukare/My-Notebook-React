@@ -2,11 +2,11 @@ import NotesContext from "./NotesContext";
 import { useState } from "react";
 
 const NotesState = (props) => {
-    const host = 'https://My-Notebook-Backend.prathameshdukare.repl.co/'
+    const host = process.env.REACT_APP_API_HOST_NAME
     const initialNotes = []
 
     const fetchAllNotes = async () => {
-        const response = await fetch(`${host}api/notes/getallnotes`, {
+        const response = await fetch(`${host}/api/notes/getallnotes`, {
             method: "GET",
             headers: {
                 "auth-token": localStorage.getItem("auth-token")
@@ -17,7 +17,7 @@ const NotesState = (props) => {
     }
 
     const addNote = async ({ title, description, tags }) => {
-        await fetch(`${host}api/notes/createnote`, {
+        await fetch(`${host}/api/notes/createnote`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -28,7 +28,7 @@ const NotesState = (props) => {
     }
 
     const deleteNote = async (id) => {
-        await fetch(`${host}api/notes/deletenote/${id}`, {
+        await fetch(`${host}/api/notes/deletenote/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const NotesState = (props) => {
     }
 
     const editNote = async (id, title, description, tags) => {
-        await fetch(`${host}api/notes/updatenote/${id}`, {
+        await fetch(`${host}/api/notes/updatenote/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
