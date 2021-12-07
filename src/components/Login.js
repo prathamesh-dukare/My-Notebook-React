@@ -9,7 +9,7 @@ export default function Login(props) {
     }
     const onSubmit = async (e) => {
         e.preventDefault()
-        const response = await fetch(`http://localhost:5000/api/auth/login`, {
+        const response = await fetch(`https://My-Notebook-Backend.prathameshdukare.repl.co/api/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
