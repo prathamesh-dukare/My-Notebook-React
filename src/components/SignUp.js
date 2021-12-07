@@ -9,7 +9,8 @@ export default function SignUp(props) {
     }
     const onSubmit = async (e) => {
         e.preventDefault()
-        const response = await fetch(`https://My-Notebook-Backend.prathameshdukare.repl.co/api/auth/createuser`, {
+        const apiHost = process.env.REACT_APP_API_HOST_NAME
+        const response = await fetch(`${apiHost}/api/auth/createuser`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
