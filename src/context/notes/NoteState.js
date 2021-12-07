@@ -2,7 +2,7 @@ import NotesContext from "./NotesContext";
 import { useState } from "react";
 
 const NotesState = (props) => {
-    const host = 'http://localhost:5000/'
+    const host = 'https://My-Notebook-Backend.prathameshdukare.repl.co/'
     const initialNotes = []
 
     const fetchAllNotes = async () => {
