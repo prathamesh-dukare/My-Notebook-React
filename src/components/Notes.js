@@ -63,13 +63,13 @@ export default function Notes(props) {
                         </div>
                         <div className="modal-footer">
                             <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" onClick={editNoteHandler} disabled={currentENote.etitle.length===0 || currentENote.edescription.length===0 } className="btn btn-primary">Save changes</button>
+                            <button type="button" onClick={editNoteHandler} disabled={currentENote.etitle.length===0 || currentENote.edescription.length===0 } className="btn save-btn">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
             {/* Modal  */}
-            <div className="row mx-5 my-3">
+            <div className="row mx-5 my-3 notes-container">
                 <h2>Your Notes</h2>
                 <div className="container text-center my-3">
                     {loadingStatus && <Spinner />}
