@@ -14,7 +14,7 @@ import About from "./components/About";
 import NoteState from "./context/notes/NoteState";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 
 function App() {
   const [alertMessage, setAlertMessage] = useState("");
@@ -51,7 +51,7 @@ function App() {
           </Switch>
         </Router>
       </NoteState>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
