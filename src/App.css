@@ -1,13 +1,22 @@
+/* Reset and Globle styles */
 body{
   font-family: 'Bitter', serif;
 }
+
+/* common  */
+h2{
+  text-align: center;
+}
+.my-5{
+  margin-bottom: 2rem!important;
+}
+/* icons  */
 i{
   padding: 3px;
   cursor: pointer;
 }
-h2{
-  text-align: center;
-}
+
+/* Notes card styles  */
 .card-text{
   padding: 4px;
   background-color:#e0e8e8cc;
@@ -19,10 +28,6 @@ h2{
 .card{
   background-color:#afefd9;
 }
-.my-5{
-  margin-bottom: 2rem!important;
-}
-
 .btn-addnote{
   background-color: #0aa640;
 }
@@ -32,12 +37,25 @@ h2{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-/* About  */
+
+/* About Page styles */
 img{
   width:52vw;
 }
 .notes-form{
   width:55vw;
+}
+.notes-container{
+  margin-bottom: 5rem!important;
+}
+
+/* Miscelleneous  */
+.modal-dialog{
+  top: 3rem;
+}
+.save-btn{
+  background-color: #24af54;
+  color: white;
 }
 
 /* Media queries for smaller screens */
