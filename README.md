@@ -27,7 +27,7 @@ Deployed URL -> https://my-notebook-react.vercel.app/
 <b>Database</b>: mongoDB
 <br>
 
-<b>Deployment</b>: Netlify
+<b>Deployment</b>: Vercel
 
 ***Glad to see you here! Show some love by Connecting on socials***
 
