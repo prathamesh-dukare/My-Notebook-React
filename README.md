@@ -8,7 +8,7 @@ FrontEnd Code -> https://github.com/Prathamesh-Dukare/My-Notebook-React
 <br>
 BackEnd Code -> https://github.com/Prathamesh-Dukare/My-Notebook-Backend
 <br>
-Deployed URL -> https://my-notesbook.netlify.app/
+Deployed URL -> https://my-cloud-notebook.netlify.app/
 # Tech Stack
 <b>FrontEnd</b>: Reactjs<br>
 <b>BackEnd</b>: Node-Express
